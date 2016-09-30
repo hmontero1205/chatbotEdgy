@@ -4,12 +4,14 @@ public class MichaelDate implements Topic {
 	
 	private boolean inDateLoop;
 	private String dateResponse;
+	
 	@Override
 	public void talk() {
 		// TODO Auto-generated method stub
 		inDateLoop = true;
 		while(inDateLoop){
 			HansMain.print("Testing. Let's on a date.");
+			dateResponse = HansMain.getInput();
 		}
 		
 	}
@@ -25,6 +27,8 @@ public class MichaelDate implements Topic {
 		return false;
 	}
 	
-	
+	public void response(){
+		
+	}
 }
 

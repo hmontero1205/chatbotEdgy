@@ -8,6 +8,9 @@ public class MichaelDate implements Topic {
 	public void talk() {
 		// TODO Auto-generated method stub
 		inDateLoop = true;
+		while(inDateLoop){
+			HansMain.print("Testing. Let's on a date.");
+		}
 		
 	}
 

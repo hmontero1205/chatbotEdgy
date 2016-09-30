@@ -25,7 +25,7 @@ public class DavidConfigure implements Topic {
 	@Override
 	public void talk() {
 		// TODO Auto-generated method stub
-
+//hehe xd
 	}
 
 	@Override

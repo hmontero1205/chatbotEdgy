@@ -5,7 +5,7 @@ package groupFiles;
 public class ShohebPhysical implements Topic{
 
 	public void talk() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub xd
 		
 	}
 
@@ -19,6 +19,6 @@ public class ShohebPhysical implements Topic{
 		}
 		return false;
 	}
-	
+
 
 }

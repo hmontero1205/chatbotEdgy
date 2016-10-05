@@ -3,10 +3,11 @@ package groupFiles;
 public class MichaelDate implements Topic {
 	
 	private boolean inDateLoop;
+	private boolean inDate = false;
 	private String dateResponse;
 	private String[] places = {"park","mall","beach","amusement park"};
 	private String[] events = {"a wild dog has appeared","it started raining","I lost my keys"};
-	
+	private String[] eventActions = {"get ice cream","take pictures", "run around","eat food"};
 	@Override
 	public void talk() {
 		// TODO Auto-generated method stub
@@ -23,6 +24,7 @@ public class MichaelDate implements Topic {
 				dateResponse = HansMain.getInput();
 				if (HansMain.findKeyword(dateResponse, "yes" , 0) >= 0 || HansMain.findKeyword(dateResponse, "fine" , 0) >= 0 ){
 					HansMain.print("Yay. I'm so excited.");
+					inDate=true;
 					dateSimulate();
 				}
 				else{
@@ -46,9 +48,9 @@ public class MichaelDate implements Topic {
 	}
 	
 	public void dateSimulate(){
-		while (inDateLoop){
+		while (inDate){
 			HansMain.print("Whew. That was a long walk.");
-			//Pull some of the events from the string array to make talk... continue off here...
+			//3 events and quit or user says quit
 		}
 	}
 	

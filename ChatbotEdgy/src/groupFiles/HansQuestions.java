@@ -4,18 +4,27 @@ package groupFiles;
 public class HansQuestions {
 	private boolean inQuestionsLoop;
 	private String questionsResponse;
+	private boolean askedFollowup = false;
 	
 	public void talk() {
 		inQuestionsLoop = true;
 		while(inQuestionsLoop){
 			HansMain.print("Questions are fun! Ask another!");
 			questionsResponse = HansMain.getInput();
-			if(HansMain.findKeyword(questionsResponse, "break", 0)>=0 || !questionsResponse.substring(questionsResponse.length()-1).equals("?") ){
+			if(askedFollowup && HansMain.findKeyword(questionsResponse, "break", 0)>=0 || !questionsResponse.substring(questionsResponse.length()-1).equals("?") ){
 				inQuestionsLoop = false;
 				HansMain.talkForever();
 			}
-			else
-				HansMain.print("I have no answer to that question yet!");
+			else{
+				//HansMain.print("I have no answer to that question yet!");
+				int likeIndex = HansMain.findKeyword(questionsResponse,"like",0);
+				if(likeIndex > 0){
+					String subjectString = questionsReponse.substring(likeIndex,questionsReponse.length()-1);
+					HansMain.print("The subject of your sentence was..."+subjectString);
+				}
+				else
+					HansMain.print("I can't answer that question just yet...");
+			}
 		}
 
 	}

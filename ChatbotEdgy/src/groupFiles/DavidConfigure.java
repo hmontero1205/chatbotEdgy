@@ -7,7 +7,6 @@ public class DavidConfigure implements Topic {
 	private boolean inConfigureLoop;
 	private String youResponse = HansMain.getInput();
 	
-	
 	private String[] favColors = {"Red", "Blue", "Green", "Yellow", "Orange", "Purple", "Magenta", "Black", "White", "Teal", "Aquamarine"};
 	private String[] favPlaces = {"Beach", "Amusement Park", "Restaurant", "Music Festival"};
 	private String[] favActivities = {"Reading", "Sports", "Gaming"};
@@ -42,8 +41,6 @@ public class DavidConfigure implements Topic {
 	public String findFavItem(String[] array) {
 		return array[(int) (Math.random() * array.length)]; 		
 	}
-
-
 
 	public String findFavMusicGenre() {
 		String faveMusic = favMusic[(int) (Math.random() * favMusic.length)];
@@ -102,7 +99,6 @@ public class DavidConfigure implements Topic {
 		else return "";
 	}
 	
-	@Override
 	public void talk() {
 		inConfigureLoop = true;
 		//while()
@@ -145,7 +141,24 @@ public class DavidConfigure implements Topic {
 		}
 		return "";
 	}
-	@Override
+	
+	public String getSalutations(String input){
+		String[] maleSalu = {"you handsome devil you, ", "you big strong man~ "};
+		String[] femaleSalu = {"you beautiful lady you ", "so beautiful~ "};
+		String[] otherSalu = {"you handsomely beautiful partner you ", "you perfect example of genderfluidity you " }; 
+		
+		if(Objects.equals(genderSubject, "boy")){
+			return maleSalu[(int) (Math.random() * maleSalu.length)];
+		}
+		else if(Objects.equals(genderSubject, "girl")){
+			return femaleSalu[(int) (Math.random() * femaleSalu.length)];
+		}
+		else if(Objects.equals(genderSubject, "other")){
+			return otherSalu[(int) (Math.random() * otherSalu.length)];
+		}
+		else return "";
+	}
+	
 	public boolean isTriggered(String userInput) {
 		if(HansMain.findKeyword(userInput, "girl", 0) >= 0){
 			return true;

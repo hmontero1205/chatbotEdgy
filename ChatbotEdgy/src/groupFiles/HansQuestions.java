@@ -8,6 +8,7 @@ public class HansQuestions {
 	
 	public void talk() {
 		inQuestionsLoop = true;
+		//HansMain.print(HansMain.response);
 		while(inQuestionsLoop){
 			HansMain.print("Questions are fun! Ask another!");
 			questionsResponse = HansMain.getInput();
@@ -19,7 +20,7 @@ public class HansQuestions {
 				//HansMain.print("I have no answer to that question yet!");
 				int likeIndex = HansMain.findKeyword(questionsResponse,"like",0);
 				if(likeIndex > 0){
-					String subjectString = questionsReponse.substring(likeIndex,questionsReponse.length()-1);
+					String subjectString = questionsResponse.substring(likeIndex+5,questionsResponse.length()-1);
 					HansMain.print("The subject of your sentence was..."+subjectString);
 				}
 				else

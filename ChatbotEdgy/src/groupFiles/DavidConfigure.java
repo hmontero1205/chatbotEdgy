@@ -132,7 +132,7 @@ public class DavidConfigure implements Topic {
 
 	@Override
 	public boolean isTriggered(String userInput) {
-		if(HansMain.findKeyword(youResponse, "start simulation", 0) >= 0){
+		if(HansMain.findKeyword(userInput, "start simulation", 0) >= 0){
 			return true;
 		}
 		return false;

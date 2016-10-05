@@ -6,21 +6,21 @@ public class HansMain {
 	static Scanner input;
 	static String user;
 	static boolean inLoop;
+	static String[] basicSayings = {"Say something","Hi","Talk to me","Say something interesting"};
+	static String[] basicResponses = {"Yep..","mhm","*awkwardly whistles*","good looks"};
 	static String response;
+	static MichaelDate date;
+	static HansQuestions questions;
 	//static int lineCount;
 
 	public static void main(String[] args) {
 		createTopics();
-		//lineCount = 0;
-		//demonstrateStringMethods();
-		//promptInput();
 		promptName();
-		talkForever();
-		
+		talkForever();	
 	}
 	
 	private static void promptName() {
-		print("Suh, dude. I am a board covered with semiconductors and other electronic components. What is your name?");
+		print("Hey man. I am a board covered with semiconductors and other electronic components ready to be your love interest. What is your name?");
 		user = input.nextLine();
 		print("Cool beans. I will call you "+user+" until you terminate me.");
 	}
@@ -28,51 +28,41 @@ public class HansMain {
 	public static void talkForever(){
 		inLoop = true;
 		while(inLoop){
-			//promptInput();
-			print("Greetings, "+user+". How's it going?");
+			print(basicSayings[(int)(Math.random()*basicSayings.length)]+" "+user+"!");//
 			response = getInput();
-			if(findKeyword(response,"good", 0) >= 0)
-				print("Good looks");
-			else
-				print("I don't understand?");
+			if(date.isTriggered(response)){
+				inLoop = false;
+				date.talk();
+			}
+			else if(questions.isTriggered(response)){
+				inLoop = false;
+				questions.talk();
+			}
+				print(basicResponses[(int)(Math.random()*basicResponses.length)]);
 		}
 	}
 
 	public static int findKeyword(String searchString, String key, int startIndex) {
-		//delete white space
 		String phrase = searchString.trim();
-		//to lower case
 		phrase = phrase.toLowerCase();
 		key = key.toLowerCase();
-		
-//		System.out.println("The phrase is "+phrase);
-//		System.out.println("The key is "+key);
 		int psn = phrase.indexOf(key);
-//		System.out.println("The position found is "+psn);
-		//keep looking for word until you find right context
 		while(psn >= 0){
-			//if phrase doesn't end with is word
 			String before = " ";
 			String after = " ";
 			if(psn + key.length() < phrase.length()){
 				after = phrase.substring(psn+key.length(),psn+key.length() +1).toLowerCase();
-//				System.out.println("The character after "+key+ " is "+after);
 			}
 			if(psn>0){
 				before = phrase.substring(psn-1,psn).toLowerCase();
-//				System.out.println("The character before "+key+ " is "+before);
 			}
 			if(before.compareTo("a")<0 && after.compareTo("a") < 0){
-//				System.out.println(key+" was found at "+psn);
 				if(noNegations(phrase,psn)){
 					return -1;
 				}
 				return psn;
 			}
-			//in case keyword not found, check rest of string	
 			psn = phrase.indexOf(key,psn+1);
-			//Goody Goode was a character in The Crucible. Goodbye Goody Goode
-//			System.out.println(key+" not found. checking "+psn);
 		}
 		
 		return -1;
@@ -99,28 +89,21 @@ public class HansMain {
 
 	public static void createTopics() {
 		input = new Scanner(System.in);
+		date = new MichaelDate();
+		questions = new HansQuestions();
 		//initialize group classes
 		
 	}
 	public static void print(String s){
-		//create multiline string
 		String printString = "";
 		int cutOff = 35;
-		//check if there are words to add
-		//is length of s > 0?
 		while(s.length() > 0){
 			String currentLine = "";
 			String nextWord = "";
-			//while the currentLine and nextWord are less than cutoff,AND THERE ARE STILL WORDS TO ADD,
-			//do the following loooooooop
 			while(currentLine.length() + nextWord.length() <= cutOff && s.length() > 0){
-				//add the next word to line
 				currentLine += nextWord;
-				//remove that word
 				s = s.substring(nextWord.length());
-				//get the next word
 				int endOfWord = s.indexOf(" ");
-				//check to see if this is the last word
 				if(endOfWord == -1)
 					endOfWord = s.length()-1;
 				nextWord = s.substring(0,endOfWord+1);

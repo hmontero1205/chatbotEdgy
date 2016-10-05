@@ -53,7 +53,7 @@ public class MichaelDate implements Topic {
 	}
 	
 	public String pickRandom(String[] arr){
-		return arr[(int) Math.random()*arr.length];
+		return arr[(int)(Math.random()*arr.length)];
 	}
 }
 

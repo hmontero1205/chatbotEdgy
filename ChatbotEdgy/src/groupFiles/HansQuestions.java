@@ -1,5 +1,4 @@
 package groupFiles;
-
 //import ChatbotEdgy.HansMain;
 
 public class HansQuestions {
@@ -9,7 +8,14 @@ public class HansQuestions {
 	public void talk() {
 		inQuestionsLoop = true;
 		while(inQuestionsLoop){
-			HansMain.print("Questions...");
+			HansMain.print("Questions are fun! Ask another!");
+			questionsResponse = HansMain.getInput();
+			if(HansMain.findKeyword(questionsResponse, "break", 0)>=0 || !questionsResponse.substring(questionsResponse.length()-1).equals("?") ){
+				inQuestionsLoop = false;
+				HansMain.talkForever();
+			}
+			else
+				HansMain.print("I have no answer to that question yet!");
 		}
 
 	}
@@ -19,9 +25,9 @@ public class HansQuestions {
 		//use for loop to iterate thru array
 		if (HansMain.findKeyword(userInput, "curious", 0)>=0)
 			return true;
-		if (HansMain.findKeyword(userInput, "?", 0)>=0)
+		if (HansMain.findKeyword(userInput, "like", 0)>=0)
 			return true;
-		if (HansMain.findKeyword(userInput, "question", 0)>=0)
+		if (userInput.substring(userInput.length()-1).equals("?"))
 			return true;
 		
 		return false;

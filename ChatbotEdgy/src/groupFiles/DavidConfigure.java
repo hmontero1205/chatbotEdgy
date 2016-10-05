@@ -3,59 +3,62 @@ package groupFiles;
 import java.util.Objects;
 
 public class DavidConfigure implements Topic {
+	
+	private boolean inConfigureLoop;
+	private String youResponse = HansMain.getInput();
+	
+	
+	private String[] favColors = {"Red", "Blue", "Green", "Yellow", "Orange", "Purple", "Magenta", "Black", "White", "Teal", "Aquamarine"};
+	private String[] favPlaces = {"Beach", "Amusement Park", "Restaurant", "Music Festival"};
+	private String[] favActivities = {"Reading", "Sports", "Gaming"};
 
-	private String youResponse;
+	private String[] favBooks = {"Harry Potter", "Eragon", "The Dark Tower", "Pendragon"};
+	private String[] favSports = {"Soccer", "Football", "Cricket", "Polo", "Baseball", "Basketball", "Volleyball"};
+	private String[] favGames = {"Witcher 3", "Dishonored", "Overwatch", "League of Legends", "Wolfenstein", "Counter Strike: Global Offensive"};
+	private String[] favParks = {"Coney Island", "Six Flags", "Adventureland"};
+	private String[] favBeachActivities = {"Swimming", "Tanning", "Beach Volleyball", "Surfing", "Boating"};
+	private String[] favMusic = {"EDM", "Rock", "Metal", "Country", "K-pop", "Pop"};
+	private String[] favFoods = {"Pasta", "Meat", "Salad", "Pizza", "Soup"};
 	
-	public String[] favColors = {"Red", "Blue", "Green", "Yellow", "Orange", "Purple", "Magenta", "Black", "White", "Teal", "Aquamarine"};
-	public String[] favPlaces = {"Beach", "Amusement Park", "Restaurant", "Music Festival"};
-	public String[] favActivities = {"Reading", "Sports", "Gaming"};
-
-	public String[] favBooks = {"Harry Potter", "Eragon", "The Dark Tower", "Pendragon"};
-	public String[] favSports = {"Soccer", "Football", "Cricket", "Polo", "Baseball", "Basketball", "Volleyball"};
-	public String[] favGames = {"Witcher 3", "Dishonored", "Overwatch", "League of Legends", "Wolfenstein", "Counter Strike: Global Offensive"};
-	public String[] favParks = {"Coney Island", "Six Flags", "Adventureland"};
-	public String[] favBeachActivities = {"Swimming", "Tanning", "Beach Volleyball", "Surfing", "Boating"};
-	public String[] favMusic = {"EDM", "Rock", "Metal", "Country", "K-pop", "Pop"};
-	public String[] favFoods = {"Pasta", "Meat", "Salad", "Pizza", "Soup"};
-	
-	public int colorIndex = (int) (Math.random() * favColors.length);
-	public int placeIndex = (int) (Math.random() * favPlaces.length);
-	public int activityIndex = (int) (Math.random() * favActivities.length);
-	
-	public String favColor = favColors[colorIndex];
-	public String favPlace = favPlaces[placeIndex];
-	public String favActivity = favActivities[activityIndex];
-	
-	public String favBeachActivity = findFavBeachActivity();
-	public String favPark = findFavParks();
-	public String favFood = findFavFoods();
 	public String favMusicGenre = findFavMusicGenre();
 	public String favMusicMaker = findFavMusicMaker();
 	public String favSong = findFavSong();
-	public String favBook = findFavBook();
-	public String favGame = findFavGame();
-	public String favSport = findFavSport();
+	public String favSport = findFavItem(favSports);
+	public String favPark = findFavItem(favParks);
+	public String favFood = findFavItem(favFoods);
 	
-	private String findFavBook() {
-		String favBook = favBooks[(int) (Math.random() * favBooks.length)]; 		
-		return favBook;
+	private String genderSubject = findGender();
+	private String genderChatbot = chooseGender();
+	
+	public boolean findFavThing(String input, String[] array){
+		for(int i = 0; i < array.length; i++){
+			if(Objects.equals(input, array[i])){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public String findFavItem(String[] array) {
+		return array[(int) (Math.random() * array.length)]; 		
 	}
 
-	private String findFavSport() {
-		String favSport = favSports[(int) (Math.random() * favSports.length)];
-		return favSport;
+
+
+	public String findFavMusicGenre() {
+		String faveMusic = favMusic[(int) (Math.random() * favMusic.length)];
+		return faveMusic;
 	}
 
-	private String findFavGame() {
-		String favGame = favGames[(int) (Math.random() * favGames.length)];
-		return favGame;
-	}
-
-	private String findFavSong() {
+	public String findFavSong() {
 		return isSongEqual(favMusicMaker);
 	}
 
-	private String isSongEqual(String musicMaker) {	
+	public String findFavMusicMaker() {
+		return isMusicEqual(favMusicGenre);
+	}
+
+	public String isSongEqual(String musicMaker) {	
 		if(Objects.equals(musicMaker, "Swedish House Mafia")){
 			return "Don't You Worry Child";
 		}
@@ -77,11 +80,7 @@ public class DavidConfigure implements Topic {
 		else return "";
 	}
 
-	private String findFavMusicMaker() {
-		return isMusicEqual(favMusicGenre);
-	}
-
-	private String isMusicEqual(String favoriteMusic){
+	public String isMusicEqual(String favoriteMusic){
 		if(Objects.equals(favoriteMusic, "EDM")){
 			return "Swedish House Mafia";
 		}
@@ -103,36 +102,64 @@ public class DavidConfigure implements Topic {
 		else return "";
 	}
 	
-	private String findFavBeachActivity() {
-		String favBeachActivity = favBeachActivities[(int) (Math.random() * favParks.length)];
-		return favBeachActivity;
-	}
-	private String findFavMusicGenre() {
-		// TODO Auto-generated method stub
-		String faveMusic = favMusic[(int) (Math.random() * favMusic.length)];
-		return faveMusic;
-	}
-
-	private String findFavFoods() {
-		// TODO Auto-generated method stub
-		String favFood = favFoods[(int) (Math.random() * favFoods.length)];
-		return favFood;
-	}
-
-	private String findFavParks() {
-		// TODO Auto-generated method stub
-		String favPark = favParks[(int) (Math.random() * favParks.length)];
-		return favPark;
-	}
-
 	@Override
 	public void talk() {
-		System.out.println("Hello are you my date?");
+		inConfigureLoop = true;
+		//while()
+	}
+	
+	public String chooseGender() {
+		if(HansMain.findKeyword(youResponse, "girl", 0) >= 0){
+			return "girl";
+		}
+		else if(HansMain.findKeyword(youResponse, "boy", 0) >= 0){
+			return "boy";
+		}
+		else if(HansMain.findKeyword(youResponse, "man", 0) >= 0){
+			return "boy";
+		}
+		else if(HansMain.findKeyword(youResponse, "woman", 0) >= 0){
+			return "boy";
+		}
+		else if(HansMain.findKeyword(youResponse, "other", 0) >= 0){
+			return "other";
+		}
+		return "";  
 	}
 
+	public String findGender() {
+		if(HansMain.findKeyword(youResponse, "girl", 0) >= 0){
+			return "girl";
+		}
+		else if(HansMain.findKeyword(youResponse, "boy", 0) >= 0){
+			return "boy";
+		}
+		else if(HansMain.findKeyword(youResponse, "woman", 0) >= 0){
+			return "girl";
+		}
+		else if(HansMain.findKeyword(youResponse, "man", 0) >= 0){
+			return "boy";
+		}
+		else if(HansMain.findKeyword(youResponse, "other", 0) >= 0){
+			return "boy";
+		}
+		return "";
+	}
 	@Override
 	public boolean isTriggered(String userInput) {
-		if(HansMain.findKeyword(userInput, "start simulation", 0) >= 0){
+		if(HansMain.findKeyword(userInput, "girl", 0) >= 0){
+			return true;
+		}
+		else if(HansMain.findKeyword(userInput, "boy", 0) >= 0){
+			return true;
+		}
+		else if(HansMain.findKeyword(userInput, "woman", 0) >= 0){
+			return true;
+		}
+		else if(HansMain.findKeyword(userInput, "man", 0) >= 0){
+			return true;
+		}
+		else if(HansMain.findKeyword(userInput, "other", 0) >= 0){
 			return true;
 		}
 		return false;

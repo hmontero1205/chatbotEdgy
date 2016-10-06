@@ -3,6 +3,7 @@ package groupFiles;
 import java.util.Scanner;
 
 public class HansMain {
+	public int loveLevel = 3;
 	static Scanner input;
 	static String user;
 	static boolean inLoop;

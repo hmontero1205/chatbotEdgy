@@ -6,7 +6,7 @@ public class HansQuestions {
 	private String questionsResponse;
 	private boolean askedFollowup = false;
 	//private String[] favAnswers = String[5];
-	private String[] questionTopics = {"sport","color","activity","book","game","park","beach","music","food"};
+	private static String[] questionTopics = {"sport","color","activity","book","game","park","beach","music","food"};
 	
 	public void talk() {
 		inQuestionsLoop = true;
@@ -19,17 +19,8 @@ public class HansQuestions {
 				HansMain.talkForever();
 			}
 			else{
-				/*int likeIndex = HansMain.findKeyword(questionsResponse,"like",0);
-				if(likeIndex > 0){
-<<<<<<< HEAD
-					String subjectString = questionsResponse.substring(likeIndex+5,questionsResponse.length()-1);
-=======
-					String subjectString = questionsResponse.substring(likeIndex,questionsResponse.length()-1);
->>>>>>> branch 'master' of https://github.com/hmontero1205/chatbotEdgy.git
-					HansMain.print("The subject of your sentence was..."+subjectString);
-				}*/
 				if(!askedFollowup){
-					String chatSub = determineSubject(questionsResponse);
+					String chatSub = determineSubject(questionsResponse, questionTopics);
 					String subPref = findPreference(chatSub);
 					if(HansMain.findKeyword(questionsResponse,"like",0)>=0 ||HansMain.findKeyword(questionsResponse,"favorite",0)>=0
 					   ||HansMain.findKeyword(questionsResponse,"enjoy",0)>=0 && HansMain.findKeyword(questionsResponse,"favorite",0)<0){
@@ -49,28 +40,20 @@ public class HansQuestions {
 		}
 	}
 	
-	public static String determineSubject(String questionsResponse2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	public static String determineResponse(String r){
+	public String determineSubject(String r, String[] subs){
 		//find subject 
-		for(int t=0;t<questionTopics.length;t++){
-			if(HansMain.findKeyword(r,questionTopics[t],0)>=0)
-				return questionTopics[t];
+		for(int t=0;t<subs.length;t++){
+			if(HansMain.findKeyword(r,subs[t],0)>=0)
+				return subs[t];
 		}
 		return "unknown";
 	}
 	
-	public static String findPreference(String s){
-		//find preference based on subject. switch statement
-		switch(s){
-			case "sport": return DavidConfigure.getFavSport();
-			case "color": return DavidConfigure.getFavColor();
-			case "activity": return DavidConfigure.getFavActivity();
-				//more to do...
-		}
+	public String findPreference(String s){
+		if(s.equals("sport"))
+			return DavidConfigure.getFavSport();
+		return"";
 	}
 
 	

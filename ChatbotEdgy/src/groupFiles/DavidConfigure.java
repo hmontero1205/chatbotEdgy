@@ -12,7 +12,7 @@ public class DavidConfigure implements Topic {
 	private String[] favActivities = {"Reading", "Sports", "Gaming"};
 
 	private String[] favBooks = {"Harry Potter", "Eragon", "The Dark Tower", "Pendragon"};
-	private String[] favSports = {"Soccer", "Football", "Cricket", "Polo", "Baseball", "Basketball", "Volleyball"};
+	private static String[] favSports = {"Soccer", "Football", "Cricket", "Polo", "Baseball", "Basketball", "Volleyball"};
 	private String[] favGames = {"Witcher 3", "Dishonored", "Overwatch", "League of Legends", "Wolfenstein", "Counter Strike: Global Offensive"};
 	private String[] favParks = {"Coney Island", "Six Flags", "Adventureland"};
 	private String[] favBeachActivities = {"Swimming", "Tanning", "Beach Volleyball", "Surfing", "Boating"};
@@ -28,7 +28,7 @@ public class DavidConfigure implements Topic {
 	private String favMusicGenre = findFavMusicGenre();
 	private String favMusicMaker = findFavMusicMaker();
 	private String favSong = findFavSong();
-	private String favSport = findFavItem(favSports);
+	private static String favSport = findFavItem(favSports);
 	private String favPark = findFavItem(favParks);
 	private String favFood = findFavItem(favFoods);
 	
@@ -36,7 +36,7 @@ public class DavidConfigure implements Topic {
 	private String genderChatbot = chooseGender();
 	
 	public String getFavColor(){
-		return "";
+		return favColor;
 	}
 	public String getFavGenre(){
 		return favMusicGenre;
@@ -47,7 +47,7 @@ public class DavidConfigure implements Topic {
 	public String getFavSong(){
 		return favSong;
 	}
-	public String getFavSport(){
+	public static String getFavSport(){
 		return favSport;
 	}
 	public String getFavParks(){

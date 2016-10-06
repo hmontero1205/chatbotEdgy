@@ -13,7 +13,7 @@ public class HansMain {
 	static String response;
 	static MichaelDate date;
 	static HansQuestions questions;
-	static ShohebSpecial physical;
+	static ShohebSpecial special;
 	//static int lineCount;
 
 	public static void main(String[] args) {
@@ -41,9 +41,9 @@ public class HansMain {
 				inLoop = false;
 				questions.talk();
 			}
-			else if(physical.isTriggered(response)){
+			else if(special.isTriggered(response)){
 				inLoop = false;
-				physical.talk();
+				special.talk();
 			}
 			else{
 				print(basicResponses[(int)(Math.random()*basicResponses.length)]);
@@ -100,7 +100,7 @@ public class HansMain {
 		input = new Scanner(System.in);
 		date = new MichaelDate();
 		questions = new HansQuestions();
-		physical = new ShohebSpecial();
+		special = new ShohebSpecial();
 		//initialize group classes
 		
 	}

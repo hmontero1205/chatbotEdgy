@@ -19,17 +19,45 @@ public class DavidConfigure implements Topic {
 	private String[] favMusic = {"EDM", "Rock", "Metal", "Country", "K-pop", "Pop"};
 	private String[] favFoods = {"Pasta", "Meat", "Salad", "Pizza", "Soup"};
 	
-	public String favMusicGenre = findFavMusicGenre();
-	public String favMusicMaker = findFavMusicMaker();
-	public String favSong = findFavSong();
-	public String favSport = findFavItem(favSports);
-	public String favPark = findFavItem(favParks);
-	public String favFood = findFavItem(favFoods);
+	private String favColor = findFavItem(favColors);
+	private String favPlace = findFavItem(favPlaces);
+	private String favActivity = findFavItem(favActivities);
+	private String favBook = findFavItem(favBooks);
+	private String favGame = findFavItem(favGames);
+	private String favBeachActivity = findFavItem(favBeachActivities);
+	private String favMusicGenre = findFavMusicGenre();
+	private String favMusicMaker = findFavMusicMaker();
+	private String favSong = findFavSong();
+	private String favSport = findFavItem(favSports);
+	private String favPark = findFavItem(favParks);
+	private String favFood = findFavItem(favFoods);
 	
 	private String genderSubject = findGender();
 	private String genderChatbot = chooseGender();
 	
-	public boolean findFavThing(String input, String[] array){
+	public String getFavColor(){
+		return "";
+	}
+	public String getFavGenre(){
+		return favMusicGenre;
+	}
+	public String getFavMusicMaker(){
+		return favMusicMaker;
+	}
+	public String getFavSong(){
+		return favSong;
+	}
+	public String getFavSport(){
+		return favSport;
+	}
+	public String getFavParks(){
+		return favPark;
+	}
+	public String getFavFood(){
+		return favFood;
+	}
+	
+	public static boolean findFavThing(String input, String[] array){
 		for(int i = 0; i < array.length; i++){
 			if(Objects.equals(input, array[i])){
 				return true;
@@ -38,7 +66,7 @@ public class DavidConfigure implements Topic {
 		return false;
 	}
 	
-	public String findFavItem(String[] array) {
+	public static String findFavItem(String[] array) {
 		return array[(int) (Math.random() * array.length)]; 		
 	}
 

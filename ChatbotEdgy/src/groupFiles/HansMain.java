@@ -43,8 +43,9 @@ public class HansMain {
 				inLoop = false;
 				physical.talk();
 			}
-			else
+			else{
 				print(basicResponses[(int)(Math.random()*basicResponses.length)]);
+			}
 		}
 	}
 

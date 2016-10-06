@@ -5,6 +5,10 @@ public class HansQuestions {
 	private boolean inQuestionsLoop;
 	private String questionsResponse;
 	private boolean askedFollowup = false;
+	private int numTimesPlayed = 0;
+	private boolean playingGame = false;
+	private int randNum;
+	private int numGuesses;
 	
 	public void talk() {
 		inQuestionsLoop = true;
@@ -16,7 +20,6 @@ public class HansQuestions {
 				HansMain.talkForever();
 			}
 			else{
-				//HansMain.print("I have no answer to that question yet!");
 				int likeIndex = HansMain.findKeyword(questionsResponse,"like",0);
 				if(likeIndex > 0){
 					String subjectString = questionsResponse.substring(likeIndex,questionsResponse.length()-1);
@@ -24,23 +27,21 @@ public class HansQuestions {
 				}
 				else
 					HansMain.print("I can't answer that question just yet...");
+				}
 			}
 		}
 
-	}
+	
 
 	public boolean isTriggered(String userInput) {
-		//String[] triggers = {"school","class","teacher"};
-		//use for loop to iterate thru array
 		if (HansMain.findKeyword(userInput, "curious", 0)>=0)
 			return true;
 		if (HansMain.findKeyword(userInput, "like", 0)>=0)
 			return true;
 		if (userInput.substring(userInput.length()-1).equals("?"))
 			return true;
-		
 		return false;
 	}
-
+	
 }
 

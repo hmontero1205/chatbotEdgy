@@ -3,6 +3,8 @@ package groupFiles;
 import java.util.Scanner;
 
 public class HansMain {
+	static int loveLevel = 3;
+	static int frustrationLevel = 0;
 	static Scanner input;
 	static String user;
 	static boolean inLoop;
@@ -11,7 +13,7 @@ public class HansMain {
 	static String response;
 	static MichaelDate date;
 	static HansQuestions questions;
-	static ShohebPhysical physical;
+	static ShohebSpecial special;
 	//static int lineCount;
 
 	public static void main(String[] args) {
@@ -39,12 +41,13 @@ public class HansMain {
 				inLoop = false;
 				questions.talk();
 			}
-			else if(physical.isTriggered(response)){
+			else if(special.isTriggered(response)){
 				inLoop = false;
-				physical.talk();
+				special.talk();
 			}
-			else
+			else{
 				print(basicResponses[(int)(Math.random()*basicResponses.length)]);
+			}
 		}
 	}
 
@@ -97,7 +100,7 @@ public class HansMain {
 		input = new Scanner(System.in);
 		date = new MichaelDate();
 		questions = new HansQuestions();
-		physical = new ShohebPhysical();
+		special = new ShohebSpecial();
 		//initialize group classes
 		
 	}

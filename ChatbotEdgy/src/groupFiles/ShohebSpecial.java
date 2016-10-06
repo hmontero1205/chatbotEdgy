@@ -2,7 +2,8 @@ package groupFiles;
 
 //import chatBot.ShohebMain;
 
-public class ShohebPhysical implements Topic{
+public class ShohebSpecial implements Topic{
+	
 
 	public void talk() {
 		// TODO Auto-generated method stub xd

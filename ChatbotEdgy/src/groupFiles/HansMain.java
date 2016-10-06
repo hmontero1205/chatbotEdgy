@@ -12,7 +12,7 @@ public class HansMain {
 	static String response;
 	static MichaelDate date;
 	static HansQuestions questions;
-	static ShohebPhysical physical;
+	static ShohebSpecial physical;
 	//static int lineCount;
 
 	public static void main(String[] args) {
@@ -99,7 +99,7 @@ public class HansMain {
 		input = new Scanner(System.in);
 		date = new MichaelDate();
 		questions = new HansQuestions();
-		physical = new ShohebPhysical();
+		physical = new ShohebSpecial();
 		//initialize group classes
 		
 	}

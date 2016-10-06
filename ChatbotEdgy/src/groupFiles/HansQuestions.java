@@ -5,10 +5,8 @@ public class HansQuestions {
 	private boolean inQuestionsLoop;
 	private String questionsResponse;
 	private boolean askedFollowup = false;
-	private int numTimesPlayed = 0;
-	private boolean playingGame = false;
-	private int randNum;
-	private int numGuesses;
+	private String favAnswers = String[5];
+	private String likeAnswers = String[5];
 	
 	public void talk() {
 		inQuestionsLoop = true;

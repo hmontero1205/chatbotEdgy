@@ -5,7 +5,6 @@ import java.util.Objects;
 public class DavidConfigure implements Topic {
 	
 	private boolean inConfigureLoop;
-	private String youResponse = HansMain.getInput();
 	String response;
 	
 	private String[] boys = {"male", "boy", "man"};
@@ -171,6 +170,10 @@ public class DavidConfigure implements Topic {
 			}
 		}
 		return false;
+	}
+	
+	public boolean isTriggered(String userInput){
+		return true;
 	}
 	
 //	public String chooseGender() {

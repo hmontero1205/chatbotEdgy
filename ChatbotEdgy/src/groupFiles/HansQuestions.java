@@ -31,7 +31,6 @@ public class HansQuestions {
 							if(Math.random()>.7){
 								HansMain.print("What are your thoughts on"+subPref+"?");
 								questionsResponse = HansMain.getInput();
-								//favAnswers.push
 								if(questionsResponse.length() < 45)
 									HansMain.print("Interesting...");
 								else

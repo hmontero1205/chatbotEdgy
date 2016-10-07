@@ -34,7 +34,7 @@ public class MichaelDate implements Topic {
 				return true;
 			}
 		}	
-		HansMain.print("I'm not ready for that yet...");
+		//HansMain.print("I'm not ready for that yet...");
 		return false;
 	}
 
@@ -108,6 +108,7 @@ public class MichaelDate implements Topic {
 							inDate=false;
 							inDateLoop=false;
 							HansMain.inLoop=true;
+							HansMain.loveLevel--;
 						}
 					}
 				}
@@ -118,6 +119,7 @@ public class MichaelDate implements Topic {
 				inDate = false;
 				inDateLoop=false;
 				HansMain.inLoop=true;
+				HansMain.loveLevel++;
 			}
 		}
 	}

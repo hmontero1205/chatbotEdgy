@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class HansMain {
 	static int loveLevel = 3;
-	static int frustrationLevel = 0;
 	static Scanner input;
 	static String user;
 	static boolean inLoop;
@@ -26,6 +25,7 @@ public class HansMain {
 		print("Hey man. I am a board covered with semiconductors and other electronic components ready to be your love interest. What is your name?");
 		user = input.nextLine();
 		print("Cool beans. I will call you "+user+" until you terminate me.");
+		//print(user+", what is your gender?")
 	}
 
 	public static void talkForever(){
@@ -124,6 +124,10 @@ public class HansMain {
 		System.out.println(printString);
 	}
 	public static String getInput(){
-		return input.nextLine();
+		String userIn = input.nextLine();
+		while(!(userIn.length()>0)){
+			userIn = input.nextLine();
+		}
+		return userIn;
 	}
 }

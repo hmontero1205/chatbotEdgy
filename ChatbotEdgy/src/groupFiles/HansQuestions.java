@@ -4,8 +4,7 @@ package groupFiles;
 public class HansQuestions {
 	private boolean inQuestionsLoop;
 	private String questionsResponse;
-	//private boolean askedFollowup = false;
-	private String[][] botMemory = new String[4][2];
+	private String[][] botMemory = new String[3][2];
 	private static String[] questionTopics = {"sport","color","activity","book","game","park","beach","music","food","place"};
 	private int memIndex = 0;
 	private boolean memFull = false;
@@ -28,27 +27,30 @@ public class HansQuestions {
 	}
 		
 	public void determinePrompt(){
-		if(Math.random() > .9 && memFull){
+		if(Math.random() > .5 && memFull){
 			String[] randMem = botMemory[(int)(Math.random()*botMemory.length)];
-			HansMain.print("Hey I was thinking about when we chatting about "+randMem[0]+". This is what you had to say about that: '"+randMem[1]+"'.");
+			HansMain.print("Hey I was thinking about when we chatting about our favorite "+randMem[0]+". This is what you had to say about that: '"+randMem[1]+"'.");
 			int randChoice = (int)(Math.random()*3)+1;
+			randChoice = 3;
 			switch (randChoice){
-				case 1: HansMain.print("I just found what you said so...compelling.");
+				case 1: HansMain.print("I just found what you said so...compelling. Any other questions for me?");
 						break;
-				case 2: HansMain.print("I'm just curious to see what else you have to say about "+randMem[0]+". Anything else come to mind?");
+				case 2: HansMain.print("I'm just curious to see what else you have to say about the subject of "+randMem[0]+". What else can be said about that?");
 						randMem[1] = HansMain.getInput();
-						HansMain.print("Cool. Thanks for sharing!");
+						HansMain.print("Cool. Thanks for sharing with me! What other questions do you have?");
 						break;
 				case 3: HansMain.print(HansMain.user+"! What did I say was my favorite "+randMem[0]+"?");
 						String favRandMem = findPreference(randMem[0]);
 						questionsResponse = HansMain.getInput();
 						if(HansMain.findKeyword(questionsResponse,favRandMem,0)>=0){
-							HansMain.print("Hey you remembered! Awesome!!");
+							HansMain.print("Hey you remembered! Awesome!! Any questions come to mind?");
+							HansMain.loveLevel++;
 						}
 						else{
 							HansMain.print("HOW COULD YOU FORGET THAT MY FAVORITE "+randMem[0].toUpperCase()+" IS"+favRandMem.toUpperCase()+"?!");
 							inQuestionsLoop = false;
 							HansMain.talkForever();
+							HansMain.loveLevel--;
 						}
 						break;
 				default:HansMain.print("Questions are fun! Ask another!");
@@ -69,18 +71,22 @@ public class HansQuestions {
 						String subPref = findPreference(chatSub);
 						HansMain.print("Ah yes, "+chatSub+"... My favorite would have to be "+subPref+".");
 						
-						if(Math.random()>.4){
+						if(Math.random()>.1){
 							HansMain.print("What are your thoughts on "+subPref+"?");
 							questionsResponse = HansMain.getInput();							
 							addToMemory(chatSub,questionsResponse);
-							if(questionsResponse.length() < 45)
-								HansMain.print("Interesting...");
-							else
+							if(questionsResponse.length() < 20){
+								HansMain.print("That was a short explanation...but okay.");
+								HansMain.loveLevel--;
+							}
+							else{
 								HansMain.print("Wow. You had a lot to say about "+subPref+". I respect that.");
+							}
 							
 							if(HansMain.findKeyword(questionsResponse,"also like",0)>=0 ||HansMain.findKeyword(questionsResponse,"also enjoy",0)>=0
 							   ||HansMain.findKeyword(questionsResponse,"same",0)>=0 && HansMain.findKeyword(questionsResponse,"don't",0)<0){
-								//lovePoints++;
+								HansMain.print("Wow...we both like "+subPref+"? That's amazing!");
+								HansMain.loveLevel++;
 							}
 							
 						}

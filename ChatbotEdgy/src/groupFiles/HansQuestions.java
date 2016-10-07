@@ -37,13 +37,13 @@ public class HansQuestions {
 						break;
 				case 2: HansMain.print("I'm just curious to see what else you have to say about the subject of "+randMem[0]+". What else can be said about that?");
 						randMem[1] = HansMain.getInput();
-						HansMain.print("Cool. Thanks for sharing with me! What other questions do you have?");
+						HansMain.print("Cool. Thanks for sharing with me! What other questions do you have, "+DavidConfigure.getSalutation()+"?");
 						break;
 				case 3: HansMain.print(HansMain.user+"! What did I say was my favorite "+randMem[0]+"?");
 						String favRandMem = findPreference(randMem[0]);
 						questionsResponse = HansMain.getInput();
 						if(HansMain.findKeyword(questionsResponse,favRandMem,0)>=0){
-							HansMain.print("Hey you remembered! Awesome!! Any questions come to mind?");
+							HansMain.print("Hey you remembered! Awesome!! Any questions come to mind, "+DavidConfigure.getSalutation()+"?");
 							HansMain.loveLevel++;
 						}
 						else{
@@ -85,7 +85,7 @@ public class HansQuestions {
 							
 							if(HansMain.findKeyword(questionsResponse,"also like",0)>=0 ||HansMain.findKeyword(questionsResponse,"also enjoy",0)>=0
 							   ||HansMain.findKeyword(questionsResponse,"same",0)>=0 && HansMain.findKeyword(questionsResponse,"don't",0)<0){
-								HansMain.print("Wow...we both like "+subPref+"? That's amazing!");
+								HansMain.print("Wow...we both like "+subPref+"? That's amazing, "+DavidConfigure.getSalutation()+"!");
 								HansMain.loveLevel++;
 							}
 							

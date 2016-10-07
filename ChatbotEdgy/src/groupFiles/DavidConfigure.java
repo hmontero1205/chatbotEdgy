@@ -6,6 +6,7 @@ public class DavidConfigure implements Topic {
 	
 	private boolean inConfigureLoop;
 	String response;
+	private static String[] salutations = new String[2];
 	
 	private String[] boys = {"male", "boy", "man"};
 	private String[] girls = {"female", "girl", "woman"};
@@ -33,6 +34,10 @@ public class DavidConfigure implements Topic {
 	private static String favSport = findFavItem(favSports);
 	private static String favPark = findFavItem(favParks);
 	private static String favFood = findFavItem(favFoods);
+	
+	public static String getSalutation(){
+		return salutations[(int)(Math.random()*2)];
+	}
 
 	
 	public static String getFavColor(){
@@ -151,16 +156,23 @@ public class DavidConfigure implements Topic {
 			HansMain.print("What gender are you?");
 			response = HansMain.getInput();
 			if(checkIfContains(response, boys)){
-				HansMain.print("Ohhhh a big strong man to sweep me off my feet");
+				HansMain.print("Ohhhh a big strong man to sweep me off my feet!");
+				salutations[0] = "you handsome devil you~";
+				salutations[1] = "you big strong man~";
 			}
-			if(checkIfContains(response, girls)){
+			else if(checkIfContains(response, girls)){
 				HansMain.print("I'm a girl myself but... sure why not try new things.");
+				salutations[0] = "you beautiful lady you~";
+				salutations[1] = "gorgeous~";
 			}
 			else{
-				HansMain.print("Ok, ok I GET IT. It's 2016. Who needs genders.");
+				HansMain.print("Ok, ok I GET IT. It's 2016. Who needs genders!!");
+				salutations[0] = "you beautiful partner you~";
+				salutations[1] = "you perfect example of genderfluidity you~";
 			}
 			inConfigureLoop = false;
 		}
+		HansMain.talkForever();
 	}
 	
 	public static boolean checkIfContains(String str, String[] arr){

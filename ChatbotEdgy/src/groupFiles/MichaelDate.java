@@ -102,7 +102,7 @@ public class MichaelDate implements Topic {
 						HansMain.print("That... doesn't sound too fun. Let's " + pickRandom(eventActions) + ".");
 						dateResponse=HansMain.getInput();
 						if (checkIfContains(dateResponse, userApprovalResponses)){
-							HansMain.print("You are very amicable. I like that :). You want to go anywhere else?");
+							HansMain.print("You are very amicable. I like that :). You want to go anywhere else, "+DavidConfigure.getSalutation()+"?");
 							eventCtr++;
 						}else{
 							HansMain.print("You are no fun. I'm going home >:(.");
@@ -116,7 +116,7 @@ public class MichaelDate implements Topic {
 			}	
 
 			if (eventCtr >= 3 || HansMain.findKeyword(dateResponse,"stop",0) >= 0){
-				HansMain.print("Actually, I think it's time for me to go. That was quite an enjoyable experience but I'm tired now. Let's call it a day... See you next time.");
+				HansMain.print("Actually, I think it's time for me to go. That was quite an enjoyable experience but I'm tired now. Let's call it a day... See you next time, "+DavidConfigure.getSalutation()+"!");
 				inDate = false;
 				inDateLoop=false;
 				HansMain.inLoop=true;

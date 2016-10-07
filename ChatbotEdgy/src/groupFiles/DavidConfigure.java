@@ -7,54 +7,72 @@ public class DavidConfigure implements Topic {
 	private boolean inConfigureLoop;
 	private String youResponse = HansMain.getInput();
 	
-	private String[] favColors = {"Red", "Blue", "Green", "Yellow", "Orange", "Purple", "Magenta", "Black", "White", "Teal", "Aquamarine"};
-	private String[] favPlaces = {"Beach", "Amusement Park", "Restaurant", "Music Festival"};
-	private String[] favActivities = {"Reading", "Sports", "Gaming"};
+	private static String[] favColors = {"red", "blue", "green", "yellow", "orange", "purple", "magenta", "black", "white", "teal", "aquamarine"};
+	private static String[] favPlaces = {"beach", "amusement Park", "restaurant", "music festival"};
+	private static String[] favActivities = {"reading", "sports", "gaming"};
 
-	private String[] favBooks = {"Harry Potter", "Eragon", "The Dark Tower", "Pendragon"};
+	private static String[] favBooks = {"Harry Potter", "Eragon", "The Dark Tower", "Pendragon"};
 	private static String[] favSports = {"Soccer", "Football", "Cricket", "Polo", "Baseball", "Basketball", "Volleyball"};
-	private String[] favGames = {"Witcher 3", "Dishonored", "Overwatch", "League of Legends", "Wolfenstein", "Counter Strike: Global Offensive"};
-	private String[] favParks = {"Coney Island", "Six Flags", "Adventureland"};
-	private String[] favBeachActivities = {"Swimming", "Tanning", "Beach Volleyball", "Surfing", "Boating"};
-	private String[] favMusic = {"EDM", "Rock", "Metal", "Country", "K-pop", "Pop"};
-	private String[] favFoods = {"Pasta", "Meat", "Salad", "Pizza", "Soup"};
+	private static String[] favGames = {"Witcher 3", "Dishonored", "Overwatch", "League of Legends", "Wolfenstein", "Counter Strike: Global Offensive"};
+	private static String[] favParks = {"Coney Island", "Six Flags", "Adventureland"};
+	private static String[] favBeachActivities = {"swimming", "tanning", "beach volleyball", "surfing", "boating"};
+	private static String[] favMusic = {"EDM", "Rock", "Metal", "Country", "K-pop", "Pop"};
+	private static String[] favFoods = {"pasta", "meat", "salad", "pizza", "soup"};
 	
-	private String favColor = findFavItem(favColors);
-	private String favPlace = findFavItem(favPlaces);
-	private String favActivity = findFavItem(favActivities);
-	private String favBook = findFavItem(favBooks);
-	private String favGame = findFavItem(favGames);
-	private String favBeachActivity = findFavItem(favBeachActivities);
-	private String favMusicGenre = findFavMusicGenre();
-	private String favMusicMaker = findFavMusicMaker();
-	private String favSong = findFavSong();
+	private static String favColor = findFavItem(favColors);
+	private static String favPlace = findFavItem(favPlaces);
+	private static String favActivity = findFavItem(favActivities);
+	private static String favBook = findFavItem(favBooks);
+	private static String favGame = findFavItem(favGames);
+	private static String favBeachActivity = findFavItem(favBeachActivities);
+	private static String favMusicGenre = findFavMusicGenre();
+	private static String favMusicMaker = findFavMusicMaker();
+	private static String favSong = findFavSong();
 	private static String favSport = findFavItem(favSports);
-	private String favPark = findFavItem(favParks);
-	private String favFood = findFavItem(favFoods);
+	private static String favPark = findFavItem(favParks);
+	private static String favFood = findFavItem(favFoods);
 	
 	private String genderSubject = findGender();
 	private String genderChatbot = chooseGender();
 	
-	public String getFavColor(){
+	public static String getFavColor(){
 		return favColor;
 	}
-	public String getFavGenre(){
+	public static String getFavGenre(){
 		return favMusicGenre;
 	}
-	public String getFavMusicMaker(){
+	public static String getFavMusicMaker(){
 		return favMusicMaker;
 	}
-	public String getFavSong(){
+	public static String getFavSong(){
 		return favSong;
 	}
 	public static String getFavSport(){
 		return favSport;
 	}
-	public String getFavParks(){
+	public static String getFavParks(){
 		return favPark;
 	}
-	public String getFavFood(){
+	public static String getFavFood(){
 		return favFood;
+	}
+	public static String getFavActivity(){
+		return favActivity;
+	}
+	public static String getFavBook(){
+		return favBook;
+	}
+	public static String getFavGame(){
+		return favGame;
+	}
+	public static String getFavPark(){
+		return favPark;
+	}
+	public static String getFavBeach(){
+		return favBeachActivity;
+	}
+	public static String getFavPlace(){
+		return favPlace;
 	}
 	
 	public static boolean findFavThing(String input, String[] array){
@@ -70,20 +88,20 @@ public class DavidConfigure implements Topic {
 		return array[(int) (Math.random() * array.length)]; 		
 	}
 
-	public String findFavMusicGenre() {
+	public static String findFavMusicGenre() {
 		String faveMusic = favMusic[(int) (Math.random() * favMusic.length)];
 		return faveMusic;
 	}
 
-	public String findFavSong() {
+	public static String findFavSong() {
 		return isSongEqual(favMusicMaker);
 	}
 
-	public String findFavMusicMaker() {
+	public static String findFavMusicMaker() {
 		return isMusicEqual(favMusicGenre);
 	}
 
-	public String isSongEqual(String musicMaker) {	
+	public static String isSongEqual(String musicMaker) {	
 		if(Objects.equals(musicMaker, "Swedish House Mafia")){
 			return "Don't You Worry Child";
 		}
@@ -105,7 +123,7 @@ public class DavidConfigure implements Topic {
 		else return "";
 	}
 
-	public String isMusicEqual(String favoriteMusic){
+	public static String isMusicEqual(String favoriteMusic){
 		if(Objects.equals(favoriteMusic, "EDM")){
 			return "Swedish House Mafia";
 		}

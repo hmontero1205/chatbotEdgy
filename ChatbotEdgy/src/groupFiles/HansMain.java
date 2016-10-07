@@ -37,13 +37,13 @@ public class HansMain {
 				inLoop = false;
 				date.talk();
 			}
-			else if(questions.isTriggered(response)){
-				inLoop = false;
-				questions.talk();
-			}
 			else if(special.isTriggered(response)){
 				inLoop = false;
 				special.talk();
+			}
+			else if(questions.isTriggered(response)){
+				inLoop = false;
+				questions.talk();
 			}
 			else{
 				print(basicResponses[(int)(Math.random()*basicResponses.length)]);

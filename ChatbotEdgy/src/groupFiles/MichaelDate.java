@@ -81,20 +81,21 @@ public class MichaelDate implements Topic {
 		while (inDate){
 			dateResponse = HansMain.getInput();
 			if (HansMain.findKeyword(dateResponse, "ice cream", 0) >= 0){
-				HansMain.print("Just what I was thinking! I just love chocolate ice cream :)");
+				HansMain.print("Just what I was thinking! I just love chocolate ice cream :).");
 				eventCtr++;
 				HansMain.print("Yummy. What do you want to do now?");
 			}else{
 				if(HansMain.findKeyword(dateResponse, "pictures", 0) >= 0){
 					HansMain.print("Okay. I want to go to the monument over there!");
 					eventCtr++;
+					HansMain.print("Okay okay. Enough pictures. Let's do something else.");
 				}else{
 					if (HansMain.findKeyword(dateResponse, "food", 0) >= 0){
 						HansMain.print("Hey, that's my favorite restaurant. Let's go there for some food.");
 						eventCtr++;	
 						HansMain.print("Nothing beats the food at this place... Anything else you want to do?");
 					}else{
-						HansMain.print("That... doesn't sound too fun. Let's " + pickRandom(eventActions));
+						HansMain.print("That... doesn't sound too fun. Let's " + pickRandom(eventActions) + ".");
 						dateResponse=HansMain.getInput();
 						if (checkIfContains(dateResponse, userApprovalResponses)){
 							HansMain.print("You are very amicable. I like that :). You want to go anywhere else?");
@@ -114,8 +115,7 @@ public class MichaelDate implements Topic {
 				inDate = false;
 				inDateLoop=false;
 				HansMain.inLoop=true;
-			}//end date helper method may be useful
-			//3 events and quit or user says quit
+			}
 		}
 	}
 }

@@ -13,7 +13,7 @@ public class HansMain {
 	static MichaelDate date;
 	static HansQuestions questions;
 	static ShohebSpecial special;
-	//static int lineCount;
+	static DavidConfigure configure;
 
 	public static void main(String[] args) {
 		createTopics();
@@ -25,7 +25,7 @@ public class HansMain {
 		print("Hey man. I am a board covered with semiconductors and other electronic components ready to be your love interest. What is your name?");
 		user = input.nextLine();
 		print("Cool beans. I will call you "+user+" until you terminate me.");
-		//print(user+", what is your gender?")
+		configure.talk();
 	}
 
 	public static void talkForever(){
@@ -98,11 +98,10 @@ public class HansMain {
 
 	public static void createTopics() {
 		input = new Scanner(System.in);
+		configure = new DavidConfigure();
 		date = new MichaelDate();
 		questions = new HansQuestions();
 		special = new ShohebSpecial();
-		//initialize group classes
-		
 	}
 	public static void print(String s){
 		String printString = "";

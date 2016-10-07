@@ -9,7 +9,7 @@ public class MichaelDate implements Topic {
 	private String[] eventActions = {"get ice cream","take pictures", "run around","eat food"};
 	private int eventCtr = 0;
 
-	private String[] userApprovalResponses={"yes","okay","fine","ok","I agree","sure","yea","yep"};
+	private String[] userApprovalResponses={"yes","okay","fine","ok","I agree","sure","yea","yep","alright"};
 	private String[] userNoResponses={"no","nope","never","nah","n't","don't"};
 	private String[] botDateAgreement={"That sounds delightful.","Sounds great! Let's go there now.","Yay. I'm so excited.","It appears we were destined <3"};
 	private String[] botReject={"I guess we don't match after all... Sorry.","Sike. I'm out.","I'm sorry. I don't think the stars are aligned when we are together."};
@@ -34,14 +34,15 @@ public class MichaelDate implements Topic {
 				return true;
 			}
 		}	
-		//HansMain.print("I'm not ready for that yet...");
 		return false;
 	}
 
 	public void talk() {
-		// TODO Auto-generated method stub
-		if (HansMain.loveLevel >=3){
+		if (HansMain.loveLevel >=4){
 			inDateLoop = true;
+		}else{
+			HansMain.print("I'm not ready for that yet...");
+			inDateLoop = false;
 		}
 		while(inDateLoop){
 			HansMain.print("Well... I guess. Where would you like to go? I recommend the " + pickRandom(places) + "."); // I need David to make a get favPlace method

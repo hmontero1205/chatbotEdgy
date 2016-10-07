@@ -1,4 +1,4 @@
-# chatbotEdgy
+chatbotEdgy
 Hans Montero, Shoheb Ome, Michael Li, David Szymanski
 Mr. Nockles Pd.6
 --------

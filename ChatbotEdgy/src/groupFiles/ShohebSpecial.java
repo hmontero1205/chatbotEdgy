@@ -4,7 +4,7 @@ package groupFiles;
 
 public class ShohebSpecial implements Topic{
 	private boolean inSpecialLoop;
-	static String origin;
+	//static String origin;
 	static String currentInteraction;
 	private String[] approvals = {"Sure!", "OK ^_^", "Gladly", "Sure (^_^)", "Be gentle", "This is my first time"};
 	private String[] rejections = {"Umm... I don't think I'm ready for that :/", "Sorry, I don't feel like it", "No thank you", "You're taking things too fast (>_<)", "You think I'm that easy huh?!", "No way jose"};

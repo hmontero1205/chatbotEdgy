@@ -39,7 +39,7 @@ public class MichaelDate implements Topic {
 
 	public void talk() {
 		// TODO Auto-generated method stub
-		if (HansMain.loveLevel >=3){
+		if (HansMain.loveLevel >=4){
 			inDateLoop = true;
 		}else{
 			HansMain.print("I'm not ready for that yet...");

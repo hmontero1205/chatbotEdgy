@@ -5,9 +5,8 @@ package groupFiles;
 public class ShohebSpecial implements Topic{
 	private boolean inSpecialLoop;
 	static String currentInteraction;
-	private String[] approvals = {"Sure!", "OK ^_^", "Gladly"};
-	private String[] politeRejections = {"Umm... I don't think I'm ready for that :/", "Sorry, I don't feel like it", "No thank you"};
-	private String[] angeryRejections = {"You're taking things too fast (>_<)", "You think I'm that easy huh?!", "No way jose"};
+	private String[] approvals = {"Sure!", "OK ^_^", "Gladly", "Sure (^_^)", "Be gentle", "This is my first time"};
+	private String[] rejections = {"Umm... I don't think I'm ready for that :/", "Sorry, I don't feel like it", "No thank you", "You're taking things too fast (>_<)", "You think I'm that easy huh?!", "No way jose"};
 	
 	public void talk() {
 		//inSpecialLoop = true;
@@ -29,20 +28,33 @@ public class ShohebSpecial implements Topic{
 		while(inSpecialLoop){
 			switch (currentInteraction){
 				case "hold hands":
-					if(HansMain.loveLevel >= 3){
-						HansMain.print("Sure (^_^)");
+					if(HansMain.loveLevel >= 4){
+						HansMain.print(approvals[(int)(Math.random()*approvals.length)] + "... *holds your hand*");
 						HansMain.loveLevel++;
 					}
 					else{
-						HansMain.print("I don't feel like it");
+						HansMain.print(rejections[(int)(Math.random()*rejections.length)]);
+						HansMain.loveLevel--;
 					}
 					break;
 				case "hug":
-					if(HansMain.loveLevel >= 4){
-						HansMain.print("Be gentle");
+					if(HansMain.loveLevel >= 5){
+						HansMain.print(approvals[(int)(Math.random()*approvals.length)] + "... *hugs*");
+						HansMain.loveLevel++;
 					}
 					else{
-						HansMain.print("No thank you");
+						HansMain.print(rejections[(int)(Math.random()*rejections.length)]);
+						HansMain.loveLevel--;
+					}
+					break;
+				case "kiss":
+					if(HansMain.loveLevel >= 7){
+						HansMain.print(approvals[(int)(Math.random()*approvals.length)] + "... *leans in*");
+						HansMain.loveLevel++;
+					}
+					else{
+						HansMain.print(rejections[(int)(Math.random()*rejections.length)]);
+						HansMain.loveLevel--;
 					}
 					break;
 				

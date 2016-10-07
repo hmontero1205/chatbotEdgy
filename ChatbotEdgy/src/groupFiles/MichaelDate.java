@@ -34,12 +34,15 @@ public class MichaelDate implements Topic {
 				return true;
 			}
 		}	
+		HansMain.print("I'm not ready for that yet...");
 		return false;
 	}
 
 	public void talk() {
 		// TODO Auto-generated method stub
-		inDateLoop = true;
+		if (HansMain.loveLevel >=3){
+			inDateLoop = true;
+		}
 		while(inDateLoop){
 			HansMain.print("Well... I guess. Where would you like to go? I recommend the " + pickRandom(places) + "."); // I need David to make a get favPlace method
 			dateResponse = HansMain.getInput();

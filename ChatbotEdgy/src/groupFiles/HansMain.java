@@ -7,8 +7,7 @@ public class HansMain {
 	static Scanner input;
 	static String user;
 	static boolean inLoop;
-	static String[] basicSayings = {"Say something","Hi","Talk to me","Say something interesting"};
-	static String[] basicResponses = {"Yep..","mhm","*awkwardly whistles*","good looks"};
+	static String[] basicResponses = {"Yep..","mhm","*awkwardly whistles*","good looks","lol"};
 	static String response;
 	static MichaelDate date;
 	static HansQuestions questions;
@@ -31,7 +30,6 @@ public class HansMain {
 	public static void talkForever(){
 		inLoop = true;
 		while(inLoop){
-			print(basicSayings[(int)(Math.random()*basicSayings.length)]+" "+user+"!");//
 			response = getInput();
 			if(date.isTriggered(response)){
 				inLoop = false;
@@ -87,13 +85,6 @@ public class HansMain {
 		else if(index-4>= 0 && phrase.substring(index-4,index).equals("n't "))
 			return true;
 		else return false;
-	}
-
-	public static void promptInput() {
-		print(user+", try inputting a string!");
-		String userInput = input.nextLine();
-		print("You typed: "+userInput);
-		
 	}
 
 	public static void createTopics() {

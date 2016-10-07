@@ -8,8 +8,8 @@ public class DavidConfigure implements Topic {
 	String response;
 	private static String[] salutations = new String[2];
 	
-	private String[] boys = {"male", "boy", "man"};
-	private String[] girls = {"female", "girl", "woman"};
+	private String[] boys = {"male", "boy", "man","guy","dude"};
+	private String[] girls = {"female", "girl", "woman","dudette","gal"};
 	private static String[] favColors = {"red", "blue", "green", "yellow", "orange", "purple", "magenta", "black", "white", "teal", "aquamarine"};
 	private static String[] favPlaces = {"beach", "amusement Park", "restaurant", "music festival"};
 	private static String[] favActivities = {"reading", "sports", "gaming"};
@@ -188,75 +188,4 @@ public class DavidConfigure implements Topic {
 		return true;
 	}
 	
-//	public String chooseGender() {
-//		if(HansMain.findKeyword(youResponse, "girl", 0) >= 0){
-//			return "girl";
-//		}
-//		else if(HansMain.findKeyword(youResponse, "boy", 0) >= 0){
-//			return "boy";
-//		}
-//		else if(HansMain.findKeyword(youResponse, "man", 0) >= 0){
-//			return "boy";
-//		}
-//		else if(HansMain.findKeyword(youResponse, "woman", 0) >= 0){
-//			return "girl";
-//		}
-//		return "other";  
-//	}
-//
-//	public String findGender() {
-//		if(HansMain.findKeyword(youResponse, "girl", 0) >= 0){
-//			return "girl";
-//		}
-//		else if(HansMain.findKeyword(youResponse, "boy", 0) >= 0){
-//			return "boy";
-//		}
-//		else if(HansMain.findKeyword(youResponse, "woman", 0) >= 0){
-//			return "girl";
-//		}
-//		else if(HansMain.findKeyword(youResponse, "man", 0) >= 0){
-//			return "boy";
-//		}
-//		else if(HansMain.findKeyword(youResponse, "other", 0) >= 0){
-//			return "boy";
-//		}
-//		return "";
-//	}
-//	
-//	public String getSalutations(String input){
-//		String[] maleSalu = {"you handsome devil you, ", "you big strong man~ "};
-//		String[] femaleSalu = {"you beautiful lady you ", "so beautiful~ "};
-//		String[] otherSalu = {"you handsomely beautiful partner you ", "you perfect example of genderfluidity you " }; 
-//		
-//		if(Objects.equals(genderSubject, "boy")){
-//			return maleSalu[(int) (Math.random() * maleSalu.length)];
-//		}
-//		else if(Objects.equals(genderSubject, "girl")){
-//			return femaleSalu[(int) (Math.random() * femaleSalu.length)];
-//		}
-//		else if(Objects.equals(genderSubject, "other")){
-//			return otherSalu[(int) (Math.random() * otherSalu.length)];
-//		}
-//		else return "";
-//	}
-//	
-//	public boolean isTriggered(String userInput) {
-//		if(HansMain.findKeyword(userInput, "girl", 0) >= 0){
-//			return true;
-//		}
-//		else if(HansMain.findKeyword(userInput, "boy", 0) >= 0){
-//			return true;
-//		}
-//		else if(HansMain.findKeyword(userInput, "woman", 0) >= 0){
-//			return true;
-//		}
-//		else if(HansMain.findKeyword(userInput, "man", 0) >= 0){
-//			return true;
-//		}
-//		else if(HansMain.findKeyword(userInput, "other", 0) >= 0){
-//			return true;
-//		}
-//		return false;
-//	}
-
 }

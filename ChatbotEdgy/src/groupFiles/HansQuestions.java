@@ -1,7 +1,6 @@
 package groupFiles;
-//import ChatbotEdgy.HansMain;
 
-public class HansQuestions {
+public class HansQuestions implements Topic {
 	private boolean inQuestionsLoop;
 	private String questionsResponse;
 	private String[][] botMemory = new String[3][2];
@@ -18,6 +17,7 @@ public class HansQuestions {
 			questionsResponse = HansMain.getInput();
 			if(HansMain.findKeyword(questionsResponse, "I'm done", 0)>=0 || !questionsResponse.substring(questionsResponse.length()-1).equals("?") ){
 				inQuestionsLoop = false;
+				HansMain.print("Oh? No more questions then? Alright.");
 				HansMain.talkForever();
 			}
 			else{
@@ -29,13 +29,12 @@ public class HansQuestions {
 	public void determinePrompt(){
 		if(Math.random() > .5 && memFull){
 			String[] randMem = botMemory[(int)(Math.random()*botMemory.length)];
-			HansMain.print("Hey I was thinking about when we chatting about our favorite "+randMem[0]+". This is what you had to say about that: '"+randMem[1]+"'.");
+			HansMain.print("Hey I was thinking about when we were chatting about our favorite "+randMem[0]+". This is what you had to say about that: '"+randMem[1]+"'.");
 			int randChoice = (int)(Math.random()*3)+1;
-			randChoice = 3;
 			switch (randChoice){
 				case 1: HansMain.print("I just found what you said so...compelling. Any other questions for me?");
 						break;
-				case 2: HansMain.print("I'm just curious to see what else you have to say about the subject of "+randMem[0]+". What else can be said about that?");
+				case 2: HansMain.print("I'm just curious to see what else you have to say about the subject of "+randMem[0]+". Any more thoughts?");
 						randMem[1] = HansMain.getInput();
 						HansMain.print("Cool. Thanks for sharing with me! What other questions do you have, "+DavidConfigure.getSalutation()+"?");
 						break;
@@ -47,7 +46,7 @@ public class HansQuestions {
 							HansMain.loveLevel++;
 						}
 						else{
-							HansMain.print("HOW COULD YOU FORGET THAT MY FAVORITE "+randMem[0].toUpperCase()+" IS"+favRandMem.toUpperCase()+"?!");
+							HansMain.print("HOW COULD YOU FORGET THAT MY FAVORITE "+randMem[0].toUpperCase()+" IS "+favRandMem.toUpperCase()+"?!");
 							inQuestionsLoop = false;
 							HansMain.talkForever();
 							HansMain.loveLevel--;
@@ -71,24 +70,24 @@ public class HansQuestions {
 						String subPref = findPreference(chatSub);
 						HansMain.print("Ah yes, "+chatSub+"... My favorite would have to be "+subPref+".");
 						
-						if(Math.random()>.1){
+						if(Math.random()>.6){
 							HansMain.print("What are your thoughts on "+subPref+"?");
 							questionsResponse = HansMain.getInput();							
 							addToMemory(chatSub,questionsResponse);
-							if(questionsResponse.length() < 20){
-								HansMain.print("That was a short explanation...but okay.");
-								HansMain.loveLevel--;
-							}
-							else{
-								HansMain.print("Wow. You had a lot to say about "+subPref+". I respect that.");
-							}
-							
-							if(HansMain.findKeyword(questionsResponse,"also like",0)>=0 ||HansMain.findKeyword(questionsResponse,"also enjoy",0)>=0
+							if(HansMain.findKeyword(questionsResponse,"also like",0)>=0 ||HansMain.findKeyword(questionsResponse,"also",0)>=0
 							   ||HansMain.findKeyword(questionsResponse,"same",0)>=0 && HansMain.findKeyword(questionsResponse,"don't",0)<0){
 								HansMain.print("Wow...we both like "+subPref+"? That's amazing, "+DavidConfigure.getSalutation()+"!");
 								HansMain.loveLevel++;
 							}
+							else{
+								if(questionsResponse.length() < 35){
+									HansMain.print("That was a short explanation...but okay.");
+								}
 							
+								else{
+									HansMain.print("Wow. You had a lot to say about "+subPref+". I respect that.");
+								}
+							}		
 						}
 					}
 				}

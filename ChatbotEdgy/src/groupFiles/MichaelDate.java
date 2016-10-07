@@ -28,7 +28,7 @@ public class MichaelDate implements Topic {
 	}
 
 	public boolean isTriggered(String userInput) {
-		String[] triggers ={"date","go out","chill","hang out"};
+		String[] triggers ={"date","go out","chill","hang out","hang"};
 		for (int i = 0; i<triggers.length-1; i++){
 			if (HansMain.findKeyword(userInput, triggers[i] , 0) >= 0){
 				return true;
@@ -43,9 +43,10 @@ public class MichaelDate implements Topic {
 		}else{
 			HansMain.print("I'm not ready for that yet...");
 			inDateLoop = false;
+			HansMain.talkForever();
 		}
 		while(inDateLoop){
-			HansMain.print("Well... I guess. Where would you like to go? I recommend the " + pickRandom(places) + "."); // I need David to make a get favPlace method
+			HansMain.print("Well... I guess. Where would you like to go? I recommend the " + pickRandom(places) + ".");
 			dateResponse = HansMain.getInput();
 			if (checkIfContains(dateResponse, userApprovalResponses)){
 				HansMain.print(pickRandom(botDateAgreement));
@@ -115,12 +116,12 @@ public class MichaelDate implements Topic {
 				}
 			}	
 
-			if (eventCtr >= 3 || HansMain.findKeyword(dateResponse,"stop",0) >= 0){
-				HansMain.print("Actually, I think it's time for me to go. That was quite an enjoyable experience but I'm tired now. Let's call it a day... See you next time, "+DavidConfigure.getSalutation()+"!");
+			if (inDate && eventCtr >= 3 || HansMain.findKeyword(dateResponse,"stop",0) >= 0){
+				HansMain.print("Actually, I think it's time for me to go. That was quite an enjoyable experience but I'm tired now. This is the end of our date... See you next time, "+DavidConfigure.getSalutation()+"!");
 				inDate = false;
 				inDateLoop=false;
 				HansMain.inLoop=true;
-				HansMain.loveLevel++;
+				HansMain.loveLevel+=2;
 			}
 		}
 	}

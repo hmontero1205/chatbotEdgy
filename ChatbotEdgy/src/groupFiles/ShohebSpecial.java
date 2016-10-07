@@ -1,7 +1,5 @@
 package groupFiles;
 
-
-
 public class ShohebSpecial implements Topic{
 	private boolean inSpecialLoop;
 	static String currentInteraction;
@@ -56,7 +54,7 @@ public class ShohebSpecial implements Topic{
 			}
 			inSpecialLoop = false;
 		}
-		
+		HansMain.talkForever();
 	}
 	
 	public static boolean checkIfContains(String str, String[] arr){

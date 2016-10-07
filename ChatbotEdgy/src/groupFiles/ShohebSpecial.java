@@ -4,28 +4,12 @@ package groupFiles;
 
 public class ShohebSpecial implements Topic{
 	private boolean inSpecialLoop;
-	static String origin;
 	static String currentInteraction;
 	private String[] approvals = {"Sure!", "OK ^_^", "Gladly", "Sure (^_^)", "Be gentle", "This is my first time"};
 	private String[] rejections = {"Umm... I don't think I'm ready for that :/", "Sorry, I don't feel like it", "No thank you", "You're taking things too fast (>_<)", "You think I'm that easy huh?!", "No way jose"};
 	private String[] affirmatives = {"yes", "of course", "i do", "yep", "i love you"};
 	
 	public void talk() {
-		//inSpecialLoop = true;
-		/*if(HansMain.loveLevel >= possibleAt){
-			HansMain.print(approvals[(int)(Math.random()*3)]);
-			HansMain.loveLevel++;
-			HansMain.frustrationLevel--;
-		}
-		else if(HansMain.frustrationLevel < 2){
-			HansMain.print(politeRejections[(int)(Math.random()*3)]);
-			HansMain.frustrationLevel++;
-		}
-		else{
-			HansMain.print(angeryRejections[(int)(Math.random()*3)]);
-			HansMain.frustrationLevel++;
-			HansMain.loveLevel--;
-		}*/
 		inSpecialLoop = true;
 		while(inSpecialLoop){
 			switch (currentInteraction){
@@ -70,8 +54,9 @@ public class ShohebSpecial implements Topic{
 					}
 					break;
 			}
+			inSpecialLoop = false;
 		}
-		inSpecialLoop = false;
+		
 	}
 	
 	public static boolean checkIfContains(String str, String[] arr){
@@ -94,6 +79,4 @@ public class ShohebSpecial implements Topic{
 		}
 		return false;
 	}
-
-
 }
